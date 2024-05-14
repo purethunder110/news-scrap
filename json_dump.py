@@ -1,12 +1,9 @@
 from seleniumwire import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 import time
 import json
 import gzip
-
 #content scrapper class import
 from content_scrapper import page_scrapper
 
@@ -18,7 +15,6 @@ article=page_scrapper()
 options = Options()
 options.add_argument("--start-maximized")  # Maximizes the browser window
 #options.add_argument("--headless") 
-#svc=Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(options=options)
 
 url = "https://www.jagran.com/uttar-pradesh/lucknow-city"
@@ -29,7 +25,7 @@ for i in range(2,cycle_time):
     print(i)
     # Scroll to the pagination button
     Load_more_button = driver.find_element(By.ID, "pagination-btn")
-    driver.execute_script("arguments[0].scrollIntoView();", Load_more_button)
+    driver.execute_script("arguments[0].scrollIntoView(true);", Load_more_button)
 
     time.sleep(1)
 
@@ -64,7 +60,7 @@ for i in range(2,cycle_time):
             json_filter_list.append(data_ofload)
             backupset.append(data_ofload)
         
-        with open("backup/"+str(i)+".json","w",encoding="utf-8") as file:
+        with open("backup2/"+str(i)+".json","w",encoding="utf-8") as file:
             json.dump(backupset,file,ensure_ascii=False,indent=4)
     #time.sleep(2)
 
