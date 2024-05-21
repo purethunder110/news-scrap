@@ -11,7 +11,7 @@ url= URL.create(
     port=5432
 )
 
-engine=create_engine(url,pool_size=50,max_overflow=20)
+engine=create_engine(url,pool_size=800,max_overflow=20)
 
 #conn=engine.connect()
 

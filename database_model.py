@@ -8,7 +8,7 @@ class NewsData(BASE):
     __tablename__= "NEWSDATA"
 
     id=Column(Integer(),primary_key=True,autoincrement=True)
-    newsID=Column(Integer,nullable=True)
+    newsID=Column(Text,nullable=True)
     title=Column(Text)
     url=Column(Text)
     body=Column(Text)
